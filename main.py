@@ -1,10 +1,16 @@
 import json
+import os
 
 from bs4 import BeautifulSoup
 import requests
 
 
 def get_data(url):
+    if os.path.exists('data'):
+        print('"data" already exists')
+    else:
+        os.mkdir('data')
+
     headers = {
         'user-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '
                       'Chrome/109.0.5414.120 Safari/537.36 Avast/109.0.19987.120'
@@ -75,5 +81,6 @@ def get_data(url):
         json.dump(final_projects_list, file, indent=4, ensure_ascii=False)
 
 
-url1 = 'https://startup.ua/ua/startups/'
-get_data(url1)
+if __name__ == '__main__':
+    url = 'https://startup.ua/ua/startups/'
+    get_data(url)
