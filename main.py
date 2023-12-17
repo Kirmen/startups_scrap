@@ -10,9 +10,9 @@ def get_data(url):
                       'Chrome/109.0.5414.120 Safari/537.36 Avast/109.0.19987.120'
     }
 
-    # eq = requests.get(url, headers=headers)
-    # with open('all_projects.html', 'wb') as file:
-    #     file.write(req.content)
+    req = requests.get(url, headers=headers)
+    with open('all_projects.html', 'wb') as file:
+        file.write(req.content)
 
     with open('all_projects.html', 'r', encoding='UTF-8') as file:
         src = file.read()
@@ -67,7 +67,7 @@ def get_data(url):
             'Short description': short_description,
             'Tags': tags,
             'Description': full_description,
-            'Pictur\' URL': pic,
+            'Pictur\'s URL': pic,
             'URL': project_url
         })
 
